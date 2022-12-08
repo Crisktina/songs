@@ -22,26 +22,33 @@ function orderAlphabetically(songsArray) {
 
 //Exercise 4: Order by year, ascending. Order songs with the same year by their title, alphabetically
 function orderByYear(array) {
-  //SOLUCION 1
-  const result = array
-    .map((object) => ({ title: object.title, year: object.year }))
-    .sort((a, b) => a.title - b.title)
-    .sort((a, b) => a.year - b.year);
-
-  return result;
-
-  //SOLUCION 2
-  //[...array] pone cada objeto como un elemento aparte y cuando hace el bucle lo pone como un objeto separado.
-  // const result = [...array].sort((a, b) => {
-  //   return a.year - b.year || a.title.localeCompare(b.title);
-  // });
+  // //SOLUCION 1
+  // const result = array
+  //   .map((object) => ({ title: object.title, year: object.year }))
+  //   .sort((a, b) => a.title - b.title)
+  //   .sort((a, b) => a.year - b.year);
 
   // return result;
+
+  // SOLUCION 2
+  // [...array] pone cada objeto como un elemento aparte y cuando hace el bucle lo pone como un objeto separado.
+  const result = [...array].sort((a, b) => {
+    return a.year - b.year || a.title.localeCompare(b.title);
+  });
+
+  return result;
 }
 
 //Exercise 5: Filter songs by genre (should return a new array with the songs with the genre asked)
 function songsByGenre(songsArray, genre) {
-  const result = songsArray.filter((item) => genre === item.genre);
+  // const findGenre = songsArray.filter(
+  //   (item) => genre === item.genre.filter((item) => item.genre)
+  // );
+
+  const result = [...songsArray].filter(
+    (item) => genre === item.genre.filter((item) => item.genre)
+  );
+  console.log(result);
   return result;
 }
 
